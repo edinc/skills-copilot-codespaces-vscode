@@ -33,4 +33,12 @@ describe('member object', () => {
     test('has showInfor function', () => {
         expect(typeof member.showInfor).toBe('function');
     });
+    
+    test('showInfor function returns correct information', () => {
+        document.write = jest.fn();
+        member.showInfor();
+        expect(document.write).toHaveBeenCalledWith('Name: Kham<br/>');
+        expect(document.write).toHaveBeenCalledWith('Age: 22<br/>');
+        expect(document.write).toHaveBeenCalledWith('Skills: JavaScript,React<br/>');
+    });
 });
